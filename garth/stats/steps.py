@@ -1,4 +1,4 @@
-from typing import ClassVar
+from typing import ClassVar, Optional
 
 from pydantic.dataclasses import dataclass
 
@@ -9,8 +9,8 @@ BASE_PATH = "/usersummary-service/stats/steps"
 
 @dataclass(frozen=True)
 class DailySteps(Stats):
-    total_steps: int
-    total_distance: int
+    total_steps: Optional[int] = 0
+    total_distance: Optional[int] = 0
     step_goal: int
 
     _path: ClassVar[str] = f"{BASE_PATH}/daily/{{start}}/{{end}}"
